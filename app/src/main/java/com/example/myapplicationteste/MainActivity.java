@@ -15,24 +15,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText ETname = findViewById(R.id.name);
-        final EditText ETage = findViewById(R.id.age);
+        final EditText editAge;
+        final EditText editNome;
         Button saveButton = findViewById(R.id.sendButton);
+
+        editAge = (EditText) findViewById(R.id.age);
+        editNome = (EditText) findViewById(R.id.name);
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent ();
-                String user_name = ETname.getText().toString();
-                intent.putExtra("USER_NAME", user_name );
-                String user_age = ETage.getText().toString();
-                intent.putExtra("USER_AGE", user_age);
+                String age = editAge.getText().toString();
+                String name = editNome.getText().toString();
 
-                Intent intent1 = new Intent(MainActivity.this, Main2Activity.class);
-                startActivity(intent);
-                startActivity(intent1);
+                Bundle args = new Bundle();
+                args.putString("age", age);
+                args.putString("name", name);
 
+                Intent it = new Intent(getApplicationContext(), Main2Activity.class);
+                it.putExtra("args_tela1", args);
+                startActivity(it);
 
             }
         });

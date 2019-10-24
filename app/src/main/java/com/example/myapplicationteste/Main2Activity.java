@@ -4,24 +4,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
 
+    EditText txtAge;
+    EditText txtName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Intent intent = getIntent();
-        String user_name = intent.getStringExtra("USER_NAME");
-        String user_age = intent.getStringExtra("USER_AGE");
-        startActivity(intent);
+        txtAge = (EditText) findViewById(R.id.age);
+        txtName = (EditText) findViewById(R.id.name);
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
+       Bundle args = getIntent().getBundleExtra("args_tela1");
 
-            user_name = bundle.getString("USER_NAME");
-            user_age = bundle.getString("USER_AGE");
+        if(args != null){
+
+            String age = args.getString("age");
+            String name = args.getString("name");
+
+            txtAge.setText(age);
+            txtName.setText(name);
 
         }
 
