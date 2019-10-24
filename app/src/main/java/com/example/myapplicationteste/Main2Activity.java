@@ -26,7 +26,7 @@ public class Main2Activity extends AppCompatActivity {
             String age = args.getString("age");
             String name = args.getString("name");
 
-            txtAge.setText(age);
+            txtAge.setText(name);
             txtName.setText(name);
 
         }
